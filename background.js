@@ -6,7 +6,7 @@ browserAPI.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       console.log("✅ Background: Saved scroll for", msg.key, msg.scroll);
       sendResponse({ success: true });
     });
-    return true; // Keep message channel open for async response
+    return true;
   }
   
   if (msg.type === "get-scroll") {
@@ -14,7 +14,7 @@ browserAPI.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       console.log("🔍 Background: Retrieved scroll data", msg.key, data[msg.key]);
       sendResponse({ scroll: data[msg.key] });
     });
-    return true; // Keep message channel open for async response
+    return true;
   }
   
   if (msg.type === "clear-scroll") {
@@ -22,6 +22,6 @@ browserAPI.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       console.log("🧹 Background: Cleared scroll data for", msg.key);
       sendResponse({ success: true });
     });
-    return true; // Keep message channel open for async response
+    return true;
   }
 });

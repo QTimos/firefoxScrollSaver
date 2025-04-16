@@ -75,7 +75,6 @@ function applyScrollPosition(scroll) {
   
   console.log("📜 Content: Starting scroll restoration to", scroll);
   
-  // Try multiple approaches to ensure scrolling works
   const scrollToPos = () => {
     // Method 1: Standard window.scrollTo
     window.scrollTo(scroll.x, scroll.y);
@@ -113,10 +112,12 @@ function applyScrollPosition(scroll) {
   setTimeout(scrollToPos, 500);
   
   // Final attempt after all dynamic content should be loaded
+  scrollToPos();
+  setTimeout(scrollToPos, 100);
+  setTimeout(scrollToPos, 500);
   setTimeout(scrollToPos, 1500);
 }
 
-// Initialize scroll restoration
 function initScrollRestoration() {
   console.log("🚀 Content: Initializing scroll restoration");
   
@@ -132,21 +133,16 @@ function initScrollRestoration() {
     });
 }
 
-// Document load event
 document.addEventListener("DOMContentLoaded", () => {
   console.log("📄 Content: DOMContentLoaded event fired");
-  // Wait briefly to allow basic rendering
   setTimeout(initScrollRestoration, 10);
 });
 
-// Window load event (after images, etc.)
 window.addEventListener("load", () => {
   console.log("🖼️ Content: Window load event fired");
-  // Try again after full page load
   setTimeout(initScrollRestoration, 10);
 });
 
-// Listen for messages from popup
 browserAPI.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   if (msg.type === "save-scroll-request") {
     console.log("📩 Content: Received save scroll request from popup");
@@ -160,7 +156,7 @@ browserAPI.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         sendResponse({ success: false, error: error.message });
       });
     
-    return true; // Keep message channel open for async response
+    return true;
   }
   
   if (msg.type === "clear-scroll-request") {
@@ -175,7 +171,7 @@ browserAPI.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         sendResponse({ success: false, error: error.message });
       });
     
-    return true; // Keep message channel open for async response
+    return true;
   }
   
   if (msg.type === "get-current-position") {

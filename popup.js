@@ -66,7 +66,7 @@ saveButton.addEventListener("click", async () => {
       .then(response => {
         if (response && response.success) {
           showStatus("Position saved!");
-          checkSavedPosition(); // Refresh the saved position display
+          checkSavedPosition();
         } else {
           showStatus("Failed to save position", true);
         }
@@ -108,5 +108,4 @@ clearButton.addEventListener("click", async () => {
   }
 });
 
-// When popup opens, check if we have a saved position
 document.addEventListener("DOMContentLoaded", checkSavedPosition);
