@@ -16,4 +16,12 @@ browserAPI.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     });
     return true; // Keep message channel open for async response
   }
+  
+  if (msg.type === "clear-scroll") {
+    browserAPI.storage.local.remove(msg.key, () => {
+      console.log("🧹 Background: Cleared scroll data for", msg.key);
+      sendResponse({ success: true });
+    });
+    return true; // Keep message channel open for async response
+  }
 });

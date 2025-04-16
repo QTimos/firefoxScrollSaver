@@ -28,6 +28,27 @@ function saveScrollPosition() {
   });
 }
 
+function clearScrollPosition() {
+  const key = getKey();
+  
+  console.log("🧹 Content: Attempting to clear scroll position");
+  
+  return new Promise((resolve, reject) => {
+    browserAPI.runtime.sendMessage({ 
+      type: "clear-scroll", 
+      key
+    }, response => {
+      if (response && response.success) {
+        console.log("✅ Content: Scroll position cleared successfully");
+        resolve(true);
+      } else {
+        console.error("❌ Content: Failed to clear scroll position");
+        reject(new Error("Failed to clear scroll position"));
+      }
+    });
+  });
+}
+
 function loadScrollPosition() {
   const key = getKey();
   
@@ -125,9 +146,7 @@ window.addEventListener("load", () => {
   setTimeout(initScrollRestoration, 10);
 });
 
-// REMOVED the beforeunload event listener to prevent auto-saving
-
-// Listen for message from popup
+// Listen for messages from popup
 browserAPI.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   if (msg.type === "save-scroll-request") {
     console.log("📩 Content: Received save scroll request from popup");
@@ -142,5 +161,30 @@ browserAPI.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       });
     
     return true; // Keep message channel open for async response
+  }
+  
+  if (msg.type === "clear-scroll-request") {
+    console.log("🧹 Content: Received clear scroll request from popup");
+    
+    clearScrollPosition()
+      .then(() => {
+        sendResponse({ success: true });
+      })
+      .catch(error => {
+        console.error("❌ Content: Error clearing scroll position", error);
+        sendResponse({ success: false, error: error.message });
+      });
+    
+    return true; // Keep message channel open for async response
+  }
+  
+  if (msg.type === "get-current-position") {
+    const position = {
+      x: window.scrollX,
+      y: window.scrollY
+    };
+    console.log("📏 Content: Reporting current position", position);
+    sendResponse({ position });
+    return false;
   }
 });

@@ -1,0 +1,23 @@
+<svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" >
+  <!-- Background circle -->
+    <svg viewBox="0 0 128 128" xmins="http://www.w3.org/2000/svg" >
+        <circle cx="64" cy="64" r="60" fill="#f06000"></circle>
+
+        <!-- Scroll document -->
+        <rect x="33" y="24" width="62" height="80" rx="3" fill="white"></rect>
+
+        <!-- Scroll bar -->
+        <rect x="90" y="24" width="5" rx="4" height="80" fill="#ddd"></rect>
+        <rect x="90" y="40" width="5" rx="1" height="20" fill="#bbb"></rect>
+
+
+        <!-- Scroll lines -->
+        <line x1="43" y1="40" x2="85" y2="40" stroke="#ddd" stroke-width="4" stroke-linecap="round"></line>
+        <line x1="43" y1="52" x2="85" y2="52" stroke="#ddd" stroke-width="4" stroke-linecap="round"></line>
+        <line x1="43" y1="64" x2="85" y2="64" stroke="#ddd" stroke-width="4" stroke-linecap="round"></line>
+        <line x1="43" y1="76" x2="69" y2="76" stroke="#ddd" stroke-width="4" stroke-linecap="round"></line>
+    </svg>
+    <!-- Arrow indicator -->
+    <svg width="128px" height="128px" viewBox="-50 -60 100 100 " xmlns="http://www.w3.org/2000/svg"><path d="M10 20C4.1286 20 0 15.514 0 10S4.1286 0 10 0s10 4.1286 10 10-4.1286 10-10 10zm-1-8.414l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a.998.998 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V6a1 1 0 00-2 0v5.586z" fill="#5C5F62"></path></svg>
+    <svg fill="#000000" width="128px" height="128px" viewBox="-93 -30 150 150" id="bookmark" data-name="Flat Line" xmlns="http://www.w3.org/2000/svg" class="icon flat-line"><path id="secondary" d="M12,17,5,21V4A1,1,0,0,1,6,3H18a1,1,0,0,1,1,1V21Z" style="fill: #f06000; stroke-width: 2;"></path></svg>
+</svg>

@@ -1,40 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <style>
-    body { 
-      font-family: sans-serif; 
-      padding: 12px; 
-      width: 220px;
-    }
-    button { 
-      padding: 10px 14px; 
-      font-size: 14px;
-      width: 100%;
-      cursor: pointer;
-      background-color: #0060df;
-      color: white;
-      border: none;
-      border-radius: 4px;
-    }
-    button:hover {
-      background-color: #003eaa;
-    }
-    #status {
-      margin-top: 12px;
-      font-size: 13px;
-      color: #2e7d32;
-      display: none;
-      text-align: center;
-    }
-    .error {
-      color: #c62828;
-    }
-  </style>
+    <link rel="style" href="style.css">
 </head>
 <body>
-  <button id="save-scroll">Save Scroll Position</button>
+  <h2>Scroll Saver</h2>
+  <div class="button-container">
+    <button id="save-scroll">Save Scroll Position</button>
+    <button id="clear-scroll">Clear Saved Position</button>
+  </div>
   <div id="status">Position saved!</div>
+  <div id="saved-info" class="info-box">
+    Saved position: <span id="saved-y">0</span> pixels
+  </div>
+  <footer>v1.0</footer>
   <script src="popup.js"></script>
 </body>
 </html>
