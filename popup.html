@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { 
+      font-family: sans-serif; 
+      padding: 12px; 
+      width: 220px;
+    }
+    button { 
+      padding: 10px 14px; 
+      font-size: 14px;
+      width: 100%;
+      cursor: pointer;
+      background-color: #0060df;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #003eaa;
+    }
+    #status {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #2e7d32;
+      display: none;
+      text-align: center;
+    }
+    .error {
+      color: #c62828;
+    }
+  </style>
+</head>
+<body>
+  <button id="save-scroll">Save Scroll Position</button>
+  <div id="status">Position saved!</div>
+  <script src="popup.js"></script>
+</body>
+</html>
